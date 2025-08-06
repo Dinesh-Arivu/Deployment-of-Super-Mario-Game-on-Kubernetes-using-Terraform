@@ -5,6 +5,13 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/sha
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform -y
 
+#install docker
+sudo apt-get update
+sudo apt-get install docker.io -y
+sudo usermod -aG docker ubuntu  
+newgrp docker
+sudo chmod 777 /var/run/docker.sock
+
 # Install kubectl
 sudo apt update
 sudo apt install curl -y
